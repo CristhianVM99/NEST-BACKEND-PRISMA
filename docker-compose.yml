@@ -1,0 +1,14 @@
+version: '3.3'
+
+services:
+  postgres:
+    image: postgres:16.1
+    container_name: postgres_prisma
+    environment:
+      - POSTGRES_DB=trelloapp
+      - POSTGRES_USER=trelloapp
+      - POSTGRES_PASSWORD=trellopass
+    volumes:
+      - ./db/init.sql:/docker-entrypoint.initdb.d/init.sql
+    ports:
+      - '5432:5432'
